@@ -6,7 +6,7 @@ VitalLens is a web app that estimates your heart rate and a rough stress level f
 
 **Live demo:** https://stupendous-semifreddo-70dd80.netlify.app/
 
-Built for the iQOO Hackathon, HealthTech track.
+Built for the Hackathon, HealthTech track.
 
 > VitalLens is a wellness awareness tool, not a medical device. It does not diagnose, treat or monitor any condition. If something feels wrong, please see a doctor.
 
