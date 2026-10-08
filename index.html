@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VitalLens | Check your pulse with your front camera</title>
+  <meta name="description" content="VitalLens estimates heart rate and a rough stress level from a 15 second face video, using only your phone's front camera.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>VitalLens</h1>
+    <p class="tagline">Look at your camera for 15 seconds. No touching the screen, no wearable, just your face.</p>
+    <p class="tagline small">For best results: face a light source, fill the frame with your face, and stay still.</p>
+  </header>
+
+  <main>
+    <div class="scanner">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="ring" id="ring"></div>
+      <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <div class="controls">
+      <button id="startBtn">Start scan</button>
+      <button id="resetBtn" class="secondary hidden">Scan again</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <section class="results" id="results">
+      <div class="stat-row">
+        <span class="bpm-number" id="bpmNumber">--</span>
+        <span class="bpm-unit">BPM</span>
+      </div>
+      <div class="stress-label" id="stressLabel"></div>
+      <div class="insight" id="insight"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="disclaimer">
+      VitalLens gives a wellness estimate using camera-based pulse detection (rPPG).
+      It is not a medical device and does not diagnose any condition.
+      If something feels off, please check with a doctor.
+    </p>
+  </footer>
+
+  <!-- hidden canvas we use to read pixel values from the video -->
+  <canvas id="canvas" width="120" height="90"></canvas>
+
+  <!-- order matters: signal.js must load before app.js -->
+  <script src="js/signal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

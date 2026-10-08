@@ -1,0 +1,178 @@
+/* VitalLens styles
+   Dark teal background with a coral "pulse" accent. Kept in one file
+   since the app is a single screen. */
+
+:root {
+  --bg: #0E1A19;
+  --surface: #16302E;
+  --pulse: #FF6B58;
+  --calm: #7FD9A6;
+  --text: #EAF3F0;
+  --muted: #8FADA7;
+  --border: #234745;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 60px;
+}
+
+header { text-align: center; }
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  color: var(--muted);
+  max-width: 420px;
+  margin: 0 auto 10px;
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+.tagline.small {
+  font-size: 0.85rem;
+  margin-bottom: 28px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* camera preview */
+.scanner {
+  position: relative;
+  width: min(340px, 80vw);
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* mirror it so it feels like a selfie */
+}
+
+/* oval guide that shows up while scanning */
+.ring {
+  position: absolute;
+  inset: 12%;
+  border: 2px solid var(--pulse);
+  border-radius: 50% / 40%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.ring.active { opacity: 0.55; }
+
+.progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;
+  background: var(--pulse);
+  transition: width 0.1s linear;
+}
+
+.controls { margin-top: 26px; }
+
+button {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1rem;
+  background: var(--pulse);
+  color: #1a0d0a;
+  border: none;
+  padding: 13px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #2c5350;
+  margin-left: 10px;
+}
+
+.hidden { display: none; }
+
+.status {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  text-align: center;
+}
+
+/* results */
+.results {
+  margin-top: 34px;
+  width: min(420px, 90vw);
+  display: none;
+}
+.results.show { display: block; }
+
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bpm-number {
+  font-family: 'Fraunces', serif;
+  font-size: 4.2rem;
+  font-weight: 600;
+  color: var(--pulse);
+}
+
+.bpm-unit { color: var(--muted); font-size: 1rem; }
+
+.stress-label {
+  text-align: center;
+  margin-top: 6px;
+  color: var(--calm);
+}
+
+.insight {
+  margin-top: 22px;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 18px 20px;
+  line-height: 1.55;
+  border-left: 3px solid var(--pulse);
+}
+
+.disclaimer {
+  margin-top: 40px;
+  max-width: 440px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+canvas { display: none; }
